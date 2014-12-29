@@ -21,14 +21,62 @@
       </ul>
     </div>
   </script>
-  <script id="main-template" type="text/templatedata">
-    <p>main text</p>
+  <script id="recent-template" type="text/templatedata">
+    <p>This is a list of failed access attempts where the same card or rfid tag has been tried three or more times in the past <%- recent_hours %> hours.</p>
+    <h3>Recent access attempts (past <%- recent_hours %> hours)</h3>
+    <% if(attempts.length == 0) { %>
+      <p>No attempts within the past <%- recent_hours %> hours</p>
+    <% } else { %>
+      <ul>
+        <% _.each(attempts, function(attempt) { %>
+          <li><%- $.timeago(attempt.date) %> (<%- moment(attempt.date).format("h:mm:ss a") %>) - <a href="#grant-access-form/<%- attempt.code %>">grant access</a></li>
+        <% }); %>
+      </ul>
+    <% } %> 
+  </script>
+  <script id="acl-form-template" type="text/templatedata">
+    <form method="post">
+      <p>Admin password: <input type="password" name="password" /></p>
+      <input type="submit" value="Get access" />
+      <p>The admin password is required in order to view the access control list, since it contains contact info for everyone with access.</p>
+    </form>
+  </script>
+  <script id="acl-template" type="text/templatedata">
+    <p>This is very raw view of the access control list. Could use improvement.</p>
+    <h3>List of everyone with access</h3>
+    <% if(acl.length == 0) { %>
+      <p>No-one seems to have accees :/</p>
+    <% } else { %>
+      <ul>
+        <% _.each(acl, function(entry) { %>
+          <li>
+            Comment: <%- entry.comment %><br/>
+            Code: <%- entry.code %>
+          </li>
+        <% }); %>
+      </ul>
+    <% } %> 
+  </script>
+  <script id="grant-access-template" type="text/templatedata">
+    <a href="">cancel</a>
+    <form method="post">
+      <p>Admin password: <input type="password" name="password" /></p>
+      <p>Name or alias of member: <input type="text" name="name" /></p>
+      <p>Name of Omni collective of which they are a member: <input type="text" name="collective" /></p>
+      <p>Means of contact (email or phone number preferred): <input type="text" name="contact_info" /></p>
+      <p>Notes (optional):<br/><textarea name="notes" cols="50" rows="5"></textarea></p>
+      <input type="submit" value="Grant access!" />
+    </form>
   </script>
   <body>
     <div id="flash"></div>
+    <div class="topmenu">
+      <a href="#recent">Recent failed attempts</a> - 
+      <a href="#access-control-list">Access Control List</a>
     <h1 id="pagetitle">doorjam web</h1>
     <div id="container">
       If this text does not go away then your browser does not support javascript.
     </div>
+    <a href="https://github.com/sudoroom/doorjam-web"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/e7bbb0521b397edbd5fe43e7f760759336b5e05f/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f677265656e5f3030373230302e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_green_007200.png"></a>
   </body>
 </html>
