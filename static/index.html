@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>dumpscribe browser</title>
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+    <script type="text/javascript" src="js/jquery-2.1.1.min.js"></script>
+    <script type="text/javascript" src="js/jquery.timeago.js"></script>
+    <script type="text/javascript" src="js/moment.js"></script>
+    <script type="text/javascript" src="js/underscore-min.js"></script>
+    <script type="text/javascript" src="js/grapnel.min.js"></script>
+    <script type="text/javascript" src="js/index.js"></script>
+  </head>
+  <script id="notebook-summary-template" type="text/templatedata">
+    <div class="notebook-summary">
+      <input type="hidden" class="id" value="<%- id %>"/>
+      <h3><%= name %></h3>
+      <ul>
+        <li>Last updated: <%- $.timeago(date) %></li>
+        <li>Pages: <%- pages.length %></li>
+        <li>Audio files: <%- audio.length %></li>
+      </ul>
+    </div>
+  </script>
+  <script id="main-template" type="text/templatedata">
+    <p>main text</p>
+  </script>
+  <body>
+    <div id="flash"></div>
+    <h1 id="pagetitle">doorjam web</h1>
+    <div id="container">
+      If this text does not go away then your browser does not support javascript.
+    </div>
+  </body>
+</html>

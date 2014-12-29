@@ -1,0 +1,28 @@
+{
+  "name": "doorjam-web",
+  "version": "0.0.1",
+  "main": "./index.js",
+  "description": "A web app for the doorjam meatspace firewall at sudo room",
+  "homepage": "http://github.com/sudoroom/doorjam-web",
+  "author": {
+    "name": "Marc Juul",
+    "email": "npm@juul.io"
+  },
+  "keywords": [
+    "access",
+    "control",
+    "physical",
+    "door",
+    "web"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sudoroom/doorjam-web.git"
+  },
+  "dependencies": {
+    "async": "^0.9.0",
+    "body-parser": "^1.10.0",
+    "express": "^4.10.6",
+    "minimist": "^1.1.0"
+  }
+}
