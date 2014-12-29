@@ -29,4 +29,44 @@ Init scripts are availabe for upstart (init_scripts/doorjam-web.conf) and for sy
 sudo npm install -g forever
 ```
 
-Make sure you tweak the paths in the init scripts before using them.
+## upstart
+
+To use the upstart script (assuming your system is using upstart), simply copy it to /etc/init/:
+
+```
+sudo cp init_scripts/doorjam-web.conf /etc/init/
+```
+
+Make sure you tweak the paths in the init scripts before using it.
+
+Now you should be able to start and stop:
+
+```
+sudo start doorjam-web
+sudo stop doorjam-web
+```
+
+and doorjam-web should auto-start when you boot.
+
+## systemd
+
+To use the systemd script (assuming your system is using systemd), simply copy it to /etc/init.d/:
+
+```
+sudo cp init_script/doorjam-web.sh /etc/init.d/doorjam-web
+```
+
+Now you should be able to start and stop doorjam-web with:
+
+```
+sudo /etc/init.d/doorjam-web start
+sudo /etc/init.d/doorjam-web stop
+```
+
+To make doorjam-web automatically start when you boot the system, run:
+
+```
+sudo update-rc.d doorjam-web defaults
+```
+
+Make sure you tweak the paths in the init scripts before using it.
