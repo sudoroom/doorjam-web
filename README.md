@@ -20,3 +20,13 @@ Copy settings.js.example to settings.js and edit it to suit your needs, then run
 ```
 ./index.js
 ```
+
+# Init scripts
+
+Init scripts are availabe for upstart (init_scripts/doorjam-web.conf) and for systemd (doorjam-web.sh). They both rely on the node.js program "forever". So install it using:
+
+```
+sudo npm install -g forever
+```
+
+Make sure you tweak the paths in the init scripts before using them.
